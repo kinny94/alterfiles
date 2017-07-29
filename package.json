@@ -1,0 +1,19 @@
+{
+  "name": "alterfiles",
+  "version": "1.0.0",
+  "description": "An npm module to change and alter the names of the files and folders",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kinny94/alterfiles.git"
+  },
+  "author": "Arjun Dass",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kinny94/alterfiles/issues"
+  },
+  "homepage": "https://github.com/kinny94/alterfiles#readme"
+}
