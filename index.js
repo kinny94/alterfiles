@@ -1,8 +1,28 @@
 var fs = require('fs');
-
+var testPath = "./../alterfiles";
+var testPath2 = "./../";
 // function that returns the list of files in a folder
 
-// funtion that returns the number of files ina folder
+const allFiles = ( path ) => {
+    fs.readdirSync( path ).forEach( file => {
+        let pathToFile = path + "/" + file;
+        if ( fs.lstatSync( pathToFile ).isFile()){
+            return console.log( "File : " + file );
+        }; 
+        if ( fs.lstatSync( pathToFile ).isDirectory()){
+            return console.log( "Folder : " + file );
+        } else {
+            return console.log( "Unknown type : " + file );
+        }
+    });
+}
+
+//merge with the function that returns the list of files with a particular extension
+
+allFiles(testPath);
+
+// funtion that returns the number of files in a folder
+    // merge with the function to return the number of files of a particular extension
 
 // function that returns the type of files in a folder
 
