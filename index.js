@@ -19,7 +19,29 @@ const allFiles = ( path ) => {
 
 //merge with the function that returns the list of files with a particular extension
 
-allFiles(testPath);
+const allFilesOfType = (path, extention) => {
+    
+    var listOfFiles = [];
+    if(extention === "" || extention === null || extention === undefined){
+        console.log("No Extension provided!!");
+        return allFiles(path);
+    }
+
+    fs.readdirSync(path).forEach( file => {
+        let brokenFileName = file.split('.');
+        let currentFileExtention = brokenFileName[brokenFileName.length - 1];
+        if(currentFileExtention === extention){
+            listOfFiles.push(file);
+        }
+    });
+
+    if(listOfFiles.length > 0){
+        return console.log(listOfFiles.toString());
+    }else{
+        return console.log(" There are no files with " + extention + " in " + path);
+    }
+}
+
 
 // funtion that returns the number of files in a folder
     // merge with the function to return the number of files of a particular extension
