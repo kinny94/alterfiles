@@ -82,10 +82,8 @@ const NumberOfFiles = (path, particularFile) => {
 }
 
 // function to return the number of files of a particular extension
-
 const filesWithExtension = (path, extension) => {
     let allFiles = NumberOfFiles(path);
-    console.log(allFiles);
     if(allFiles !== null || allFiles !== undefined || !allFiles){
         return console.log(allFiles[extension]);
     }else{
