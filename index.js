@@ -44,6 +44,43 @@ const allFilesOfType = (path, extention) => {
 
 
 // funtion that returns the number of files in a folder
+
+const NumberOfFiles = (path, particularFile) => {
+    
+    var filesObj = {};
+    if(!path){
+        return console.log("Path not specified");
+    }
+
+    fs.readdirSync(path).forEach(file => {
+
+        //algo gets hident files
+        var pathToFile = path + "/" + file;
+        //checking if the current object is a file or a folder
+        if(fs.lstatSync(pathToFile).isDirectory()){
+            if("Folder" in filesObj){                       
+                filesObj["Folder"].push(file);
+            }else{
+                filesObj["Folder"] = [];
+                filesObj["Folder"].push(file);
+            }
+        }else{ // if not then treat it as a file.
+
+            let brokenFileName = file.split(".");
+            let extension = brokenFileName[brokenFileName.length - 1];
+
+            if(extension in filesObj){
+                filesObj[extension].push(file);
+            }else{
+                filesObj[extension] = [];
+                filesObj[extension].push(file);
+            }
+        }
+    });
+    
+    return console.log(filesObj);
+}
+
     // merge with the function to return the number of files of a particular extension
 
 // function that returns the type of files in a folder
