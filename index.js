@@ -78,10 +78,20 @@ const NumberOfFiles = (path, particularFile) => {
         }
     });
     
-    return console.log(filesObj);
+    return filesObj;
 }
 
-    // merge with the function to return the number of files of a particular extension
+// function to return the number of files of a particular extension
+
+const filesWithExtension = (path, extension) => {
+    let allFiles = NumberOfFiles(path);
+    console.log(allFiles);
+    if(allFiles !== null || allFiles !== undefined || !allFiles){
+        return console.log(allFiles[extension]);
+    }else{
+        return console.log("No files or folder found!");
+    }
+}
 
 // function that returns the type of files in a folder
 
