@@ -93,7 +93,44 @@ const filesWithExtension = (path, extension) => {
 
 // function that returns the type of files in a folder
 
+const typeOfFiles = (path)   => {
+    let allFiles = {};
+
+    fs.readdirSync(path).forEach(file => {
+        let pathToFile = path + "/" + file;
+
+        if(fs.lstatSync(pathToFile).isDirectory()){
+            if("folder" in allFiles){
+                allFiles["folder"] = allFiles["folder"] + 1;
+            }else{
+                allFiles["folder"] = 1;
+            }
+        }else{
+            let brokenFileName = file.split('.');
+            let extension = brokenFileName[brokenFileName.length - 1];
+
+            if(extension in allFiles){
+                allFiles[extension] = allFiles[extention] + 1;
+            }else{
+                allFiles[extension] = 1;
+            }
+        }
+    });
+    return allFiles;
+}
+
 // function that renames the files in a folder
+
+const renameFile = (path, filename) => {
+    if(!path){
+        return console.log("Error: Invalid path");
+    }
+
+    let pathToFile = path + "/" + file;
+    fs.readdirSync(path).forEach(file => {
+        if(fs.lstatSync())
+    });
+}
 
 // function that renames a specific file in a folder
 
