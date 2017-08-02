@@ -1,6 +1,7 @@
 var fs = require('fs');
 var testPath = "./../alterfiles";
-var testPath2 = "./../";
+var testPath2 = './../';
+var testPath3 = './../alterfiles/Test/';
 // function that returns the list of files in a folder
 
 const allFiles = ( path ) => {
@@ -121,18 +122,31 @@ const typeOfFiles = (path)   => {
 
 // function that renames the files in a folder
 
-const renameFile = (path, filename) => {
+const renameFile = (path, filename, newName) => {
     if(!path){
         return console.log("Error: Invalid path");
     }
 
-    let pathToFile = path + "/" + file;
+    var changedAtleastOneFile = false;
+
     fs.readdirSync(path).forEach(file => {
-        if(fs.lstatSync())
+        if(filename === file){
+            changedAtleastOneFile = true;
+            fs.rename(file, newName, function(err){
+                if(err)
+                    console.log(err);
+            });
+        }
     });
+
+    if(!changedAtleastOneFile){
+        return console.log("No File with filename " + filename + " found!!");
+    }else{
+        return console.log("Files with names " + filename + " has been changed to "  + newName);
+    }
 }
 
-// function that renames a specific file in a folder
+// Added to backlog /*  function that renames a specific file in a folder */ 
 
 // function that create a files in a folder
 
@@ -142,8 +156,47 @@ const renameFile = (path, filename) => {
 
 // fuction that checks if a specific files exists in a folder
 
+const fileExists = (path, filename) => {
+    var found = false;
+    fs.readdirSync(path).forEach(file => {
+        if(filename === file){
+            found = true;
+            return found;  
+        }
+    });
+
+    return found;
+}
+
 // function that change the names of all the files in a folder with incremental value
 
+const changeAllFilesNames = (path, filename) => {
+    if(!path){
+        return console.log("Path not specified!!");
+    }
+
+    if(!filename){
+        filename = "";
+    }
+
+    var incrementalValue = 1;
+    fs.readdirSync(path).forEach(file => {
+
+        if(!fs.lstatSync(path + file).isDirectory()){
+            let brokenFileName = file.split('.');
+            let extention = brokenFileName[brokenFileName.length - 1];
+            let pathToFile = path + file;
+            let newName =  filename + incrementalValue + "." + extention;
+            fs.rename(pathToFile, newName, (err) => {
+                if(err)
+                    return console.log(err);
+            });
+            incrementalValue++;
+        }
+    });
+    
+    return console.log("All file names changed!!");
+}
 // function that change the extensions of all the files in a folder
 
 // function that change the extension of a particular file in a folder
@@ -151,6 +204,34 @@ const renameFile = (path, filename) => {
 // functon that create a files (Programming or txt);
 
 // function that renames a folder
+
+const renameFolder = (path, folderName, newName) => {
+    if(!path || !folderName){
+        return console.log("Function take two valid arguements.");
+    }
+
+    var changedOne = false;
+
+    fs.readdirSync(path).forEach(file => {
+        let pathToFile = path + file;
+        if(fs.lstatSync(pathToFile).isDirectory()){
+            if(file === folderName){
+                changedOne = true;
+                fs.rename(pathToFile, newName, (err) => {
+                    if(err){
+                        return console.log(err);
+                    }
+                });
+            }
+        }
+    });
+
+    if(changedOne){
+        return console.log("Folder " + folderName + " has been changed to " + newName);
+    }
+        
+    return console.log("No such folder found!!");    
+}
 
 // function that returns the system path of a file
 
