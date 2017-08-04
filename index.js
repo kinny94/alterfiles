@@ -2,6 +2,7 @@ var fs = require('fs');
 var testPath = "./../alterfiles";
 var testPath2 = './../';
 var testPath3 = './../alterfiles/Test/';
+var testPath4 = './../alterfiles/Test/Folder1';
 // function that returns the list of files in a folder
 
 const allFiles = ( path ) => {
@@ -357,6 +358,7 @@ const moveFile = (path, destination) => {
     });
 }
 
+moveFile(testPath4, testPath3);
 // function that create a copy of a file 
 
 // function to copy the contents of a files of one extesion to another
