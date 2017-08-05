@@ -147,6 +147,7 @@ const renameFile = (path, filename, newName) => {
     }
 }
 
+//check if file exists
 const fileExists = (path, filename) => {
     var found = false;
     fs.readdirSync(path).forEach(file => {
@@ -411,8 +412,6 @@ const createFile = (fileName, extension, dataToWrite) => {
 }
 
 
-// Added to backlog /*  function that renames a specific file in a folder */ 
-
 // function that removes a file from a folder
 
 const deleteFile = (filename) => {
@@ -515,4 +514,26 @@ const createCopy = (path, filename, newFilename) => {
     }
 }
 
-// function to copy the contents of a files of one extesion to another
+module.exports = {
+
+    allFiles: allFiles,
+    allFilesOfType: allFilesOfType,
+    NumberOfFiles: NumberOfFiles,
+    filesWithExtension: filesWithExtension,
+    typeOfFiles: typeOfFiles,
+    renameFile: renameFile,
+    fileExists: fileExists,
+    changeAllFilesNames: changeAllFilesNames,
+    changeExtensionAll: changeExtensionAll,
+    changeExtention: changeExtention,
+    changeAllFilesWithExtension: changeAllFilesWithExtension,
+    renameFolder: renameFolder,
+    renameAllFolder: renameAllFolder,
+    createFile: createFile,
+    deleteFile: deleteFile,
+    deleteAll: deleteAll,
+    checkFile: checkFile,
+    getPath: getPath,
+    createCopy: createCopy
+
+}
