@@ -485,4 +485,34 @@ const getPath = (filename) => {
 
 // function that create a copy of a file 
 
+const createCopy = (path, filename, newFilename) => {
+    if(!filename || !path){
+        return console.log("Inavlid function argument!");
+    }
+
+    var brokenFileName = filename.split('.');
+    var extension = brokenFileName[brokenFileName.length - 1];
+
+    if(!newFilename){
+        var newName = "Copied." + extension;
+    }else{
+        var newName = newFilename;
+    }
+
+    var found = false;
+    fs.readdirSync(path).forEach(file => {
+        if(file === filename){
+            found = true;
+            fs.createReadStream(path + "\\" + filename).pipe(fs.createWriteStream(newName));
+            return console.log("File copied!");
+        }else{
+            console.log("")
+        }
+    });
+
+    if(!found){
+        return console.log("File not found!!");
+    }
+}
+
 // function to copy the contents of a files of one extesion to another
