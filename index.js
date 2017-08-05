@@ -410,13 +410,31 @@ const createFile = (fileName, extension, dataToWrite) => {
     }
 }
 
-createFile("Hello", "cs");
 
 // Added to backlog /*  function that renames a specific file in a folder */ 
 
-// function that create a files in a folder
-
 // function that removes a file from a folder
+
+const deleteFile = (filename) => {
+    var path = (__dirname);
+    var completePathToFile = path + "/" + filename;
+    var found = false;
+    fs.readdirSync(path).forEach(file => {
+        if(filename === file){
+            found = true;
+            fs.unlinkSync(completePathToFile, (err) => {
+                if(err) return console.log(err);
+                return console.log("File successully deleted!");
+            });
+        }
+    });
+
+    if(!found){
+        return console.log("File not found!!");
+    }
+}
+
+deleteFile("test.tst");
 
 // function that removes all files of a particular type from a folder
 
