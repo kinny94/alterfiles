@@ -451,6 +451,26 @@ const deleteAll = (path) => {
 
 // fuction that checks if a specific files exists in a folder
 
+const checkFile = (path, filename) => {
+    if(!path || !filename){
+        return console.log("Invalid arguments!!");
+    }
+    var found = false;
+
+    fs.readdirSync(path).forEach(file => {
+        if(file ===  filename){
+            found = true;
+            return;
+        }
+    });
+
+    if(!found){
+        return false;
+    }else{
+        return true;
+    }
+}
+
 // function that returns the system path of a file
 
 // function that create a copy of a file 
