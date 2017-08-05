@@ -332,6 +332,86 @@ const renameAllFolder = (path, newName) => {
 
 // functon that create files (Programming or txt);
 
+const createFile = (fileName, extension, dataToWrite) => {
+    var path = __dirname;
+    if(!fileName){
+        return console.log("Filename not provied!");
+    }
+
+    if(!extension){
+        if(dataToWrite){
+            var data = dataToWrite;
+        }else{
+            var data = "Hello! I am text File!!";
+        }
+        
+        fs.writeFile(fileName + ".txt", data, (err) => {
+            if(err) console.log(err);
+            return console.log("Text File created!!");
+        });
+    }else if(extension === "cpp"){
+
+        if(dataToWrite){
+            var data = dataToWrite;
+        }else{
+            var data = "#include<iostream> \n void main(){ \n \t\tstd::cout << 'A Cpp file' << std::endl \n }";
+        }
+        
+        fs.writeFile(fileName + ".cpp" , data, (err) => {
+            if(err) console.log(err);
+            return console.log("Cpp file created !!");
+        });
+    }else if(extension === "java"){
+
+        if(dataToWrite){
+            var data = dataToWrite;
+        }else{
+            var data = `public class ${fileName}{\n\tpublic static void main(){ \n\t\t System.out.println("Hello!!"); \n\t\t} \n\t}`;
+        }
+        
+        fs.writeFile(fileName + ".java" , data, (err) => {
+            if(err) console.log(err);
+            return console.log("Java file created !!");
+        });
+    }else if(extension === "js"){
+
+        if(dataToWrite){
+            var data = dataToWrite;
+        }else{
+             var data = `console.log("Hello!")`;
+        }
+
+        fs.writeFile(fileName + ".js" , data, (err) => {
+            if(err) console.log(err);
+            console.log("Javascript file created!!");
+        });
+    }else if(extension === "py"){
+        if(dataToWrite){
+            var data = dataToWrite;
+        }else{
+             var data = `print("Hello!")`;
+        }
+
+        fs.writeFile(fileName + ".py" , data, (err) => {
+            if(err) console.log(err);
+            console.log("Javascript file created!!");
+        });
+    }else{
+        if(dataToWrite){
+            var data = dataToWrite;
+        }else{
+            data = `//start writing in your file`;
+        }
+
+        fs.writeFile(fileName + "." + extension, data, (err) => {
+            if(err) console.log(err);
+            console.log(extension  + " file created!!");
+        });
+    }
+}
+
+createFile("Hello", "cs");
+
 // Added to backlog /*  function that renames a specific file in a folder */ 
 
 // function that create a files in a folder
@@ -344,21 +424,6 @@ const renameAllFolder = (path, newName) => {
 
 // function that returns the system path of a file
 
-// function that moves a files from one folder to another
-const moveFile = (path, destination) => {
-    var source = fs.createReadStream(path);
-    var dest = fs.createWriteStream(destination);
-
-    source.pipe(dest);
-    source.on('end', () => {
-        return console.log("File has been copied!!");
-    });
-    source.on('error', (err) => {
-        return console.log(err);
-    });
-}
-
-moveFile(testPath4, testPath3);
 // function that create a copy of a file 
 
 // function to copy the contents of a files of one extesion to another
