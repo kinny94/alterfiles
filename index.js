@@ -434,9 +434,20 @@ const deleteFile = (filename) => {
     }
 }
 
-deleteFile("test.tst");
-
 // function that removes all files of a particular type from a folder
+
+const deleteAll = (path) => {
+    if(!path){
+        return console.log("Path not specified!!");
+    }
+
+    fs.readdirSync(path).forEach(file => {
+        fs.unlinkSync(path + "/" + file, (err) => {
+            if(err) console.log(err);
+        });
+    });
+    console.log("All files deleted!!");
+}
 
 // fuction that checks if a specific files exists in a folder
 
