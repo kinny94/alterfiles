@@ -473,6 +473,16 @@ const checkFile = (path, filename) => {
 
 // function that returns the system path of a file
 
+const getPath = (filename) => {
+    var path = __dirname;
+    if(!filename){
+        return path;
+    }else{
+        var path = __dirname + "\\" + filename;
+        return path; 
+    }
+}
+
 // function that create a copy of a file 
 
 // function to copy the contents of a files of one extesion to another
