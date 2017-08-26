@@ -1,1 +1,0 @@
-var alterfiles = require('./index.js');
