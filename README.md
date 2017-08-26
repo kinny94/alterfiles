@@ -1,0 +1,2 @@
+# Alterfiles ![alt text](https://travis-ci.org/kinny94/alterfiles.svg?branch=master)
+Alterfiles is a javascript library which allows you to change the name of the files, and their extension, along with some other others like moving a file or a folder from one directory to another and copy the contents of one file from one to another and many other functionalities which will be mentioned in the README.md
