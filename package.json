@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/kinny94/alterfiles/issues"
   },
-  "homepage": "https://github.com/kinny94/alterfiles#readme"
+  "homepage": "https://github.com/kinny94/alterfiles#readme",
+  "dependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^3.5.0"
+  }
 }
