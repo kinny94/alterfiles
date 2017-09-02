@@ -18,7 +18,9 @@
   "homepage": "https://github.com/kinny94/alterfiles#readme",
   "dependencies": {
     "expect": "^1.20.2",
+    "jimp": "^0.2.28",
     "karma": "^1.7.0",
-    "mocha": "^3.5.0"
+    "mocha": "^3.5.0",
+    "netpbm": "^1.1.1"
   }
 }
